@@ -2,28 +2,47 @@ package org.vs.resttraining.messenger.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import org.vs.resttraining.messenger.database.DatabaseClass;
 import org.vs.resttraining.messenger.model.Message;
 import org.vs.resttraining.messenger.profiles.Names;
 
 public class MessageService {
 	
+	private Map<Long, Message> messages = DatabaseClass.getMessages();
 	
-	public List<Message> getAllMessages(){
+	public MessageService(){
+		messages.put(1L, new Message(1,"vincent m1",Names.VINCENT));
+		messages.put(2L, new Message(2,"vincent m2", Names.VINCENT));
+		messages.put(3L, new Message(3,"aimee m1", Names.AIMEE));
 		
-		Message m1 = new Message(1000,"V message 1", Names.VINCENT);
-		Message m2 = new Message(1001,"V message 2", Names.VINCENT);
-		Message m3 = new Message(1002,"A message 1", Names.AIMEE);
-		
-		List<Message> list = new ArrayList();
-		list.add(m1);
-		list.add(m2);
-		list.add(m3);
-		
-		return list;
 	}
 	
+	public List<Message> getAllMessages(){
+		return new ArrayList(messages.values());
+	}
 	
+	public Message addMessage(Message message){
+		message.setId(messages.size() + 1); // id is amount of messages + 1
+		this.messages.put(message.getId(), message);
+		return message;
+	}
+	
+	public Message removeMessage (Long id){
+		return messages.remove(id);
+	}
+	
+	public Message updateMessage (Message message){
+		if (message.getId() <= 0){
+			return null;
+		}else{
+			messages.put(message.getId(), message);
+			return message;
+		}
+			
+	}
+
 	
 
 }
