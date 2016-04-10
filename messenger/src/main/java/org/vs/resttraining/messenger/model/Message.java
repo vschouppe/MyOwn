@@ -1,6 +1,7 @@
 package org.vs.resttraining.messenger.model;
 
 import java.util.Date;
+import java.util.Iterator;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

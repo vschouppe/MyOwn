@@ -1,6 +1,8 @@
 package org.vs.resttraining.messenger.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -34,14 +36,19 @@ public class MessageService {
 	}
 	
 	public Message removeMessage (Long id){
-		return messages.remove(id);
+		return this.messages.remove(id);
 	}
 	
 	public Message updateMessage (Message message){
 		if (message.getId() <= 0){
 			return null;
 		}else{
-			messages.put(message.getId(), message);
+//			Iterator<Map.Entry<Long, Message>> messages = this.messages.entrySet().iterator();
+//			while (messages.hasNext()) {
+//			    Map.Entry<Long, Message> mes = messages.next();
+//			    System.out.println("Key = " + mes.getKey() + ", Value = " + mes.getValue());
+//			}
+			this.messages.put(message.getId(), message);
 			return message;
 		}
 			

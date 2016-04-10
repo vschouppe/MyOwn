@@ -11,22 +11,30 @@ public class Profile {
 	private long id;
 	private String firstName;
 	private String lastName;
+	private String profileName;
 	
 	public Profile() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Profile(long id, String firstName, String lastName) {
+	public Profile(long id, String firstName, String lastName, String profileName) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.profileName = profileName;
 		this.created = new Date();
 	}
 	private Date created;
 	
 	public long getId() {
 		return id;
+	}
+	public String getProfileName() {
+		return profileName;
+	}
+	public void setProfileName(String profileName) {
+		this.profileName = profileName;
 	}
 	public void setId(long id) {
 		this.id = id;
