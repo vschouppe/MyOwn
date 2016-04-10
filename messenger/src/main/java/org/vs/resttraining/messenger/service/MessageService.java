@@ -1,8 +1,7 @@
 package org.vs.resttraining.messenger.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +22,24 @@ public class MessageService {
 	
 	public List<Message> getAllMessages(){
 		return new ArrayList(messages.values());
+	}
+	
+	public List<Message> getAllMessagesPerYear(int year){
+		List<Message> newL = new ArrayList();
+		Calendar cal = Calendar.getInstance();
+		for(Message m: messages.values()){
+			cal.setTime(m.getCreated());
+			if (cal.get(Calendar.YEAR) == year ){
+				newL.add(m);
+			}
+		}		
+		return newL;
+	}
+	
+	public List<Message> getAllMessagesPaginated(int start, int size){
+		List<Message> newL = new ArrayList(messages.values());
+		if (start + size > newL.size()) return newL;	
+		return newL.subList(start, start + size);	
 	}
 	
 	public Message getMessage(long id){
@@ -53,7 +70,5 @@ public class MessageService {
 		}
 			
 	}
-
-	
 
 }

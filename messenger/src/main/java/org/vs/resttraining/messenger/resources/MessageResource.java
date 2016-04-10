@@ -10,6 +10,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.vs.resttraining.messenger.model.Message;
@@ -22,8 +23,16 @@ public class MessageResource {
 
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
-	public List<Message> getMessages() {
-		return this.ms.getAllMessages();
+	public List<Message> getMessages(@QueryParam("year") int year,
+									@QueryParam("start") int start,
+									@QueryParam("size") int size) {
+		if (year > 0 ){
+			return this.ms.getAllMessagesPerYear(year);			
+		}else if ((start > 0) && (size > 0)){
+			return this.ms.getAllMessagesPaginated(start, size);
+		}else{
+			return this.ms.getAllMessages();
+		}
 	}
 
 	@POST
@@ -49,7 +58,7 @@ public class MessageResource {
 	}
 	
 	@DELETE
-	@Path("/remove/{messageId}")
+	@Path("/{messageId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Message removeMessage(@PathParam("messageId") long messageId) {
 		return this.ms.removeMessage(messageId);
