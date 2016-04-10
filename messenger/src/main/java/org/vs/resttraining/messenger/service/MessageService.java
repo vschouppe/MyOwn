@@ -23,6 +23,10 @@ public class MessageService {
 		return new ArrayList(messages.values());
 	}
 	
+	public Message getMessage(long id){
+		return messages.get(id);
+	}
+	
 	public Message addMessage(Message message){
 		message.setId(messages.size() + 1); // id is amount of messages + 1
 		this.messages.put(message.getId(), message);

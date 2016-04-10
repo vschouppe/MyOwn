@@ -10,6 +10,7 @@ public class DatabaseClass {
 	private static Map<Long, Message> messages = new HashMap<>();
 	private static Map<Long, Message> profiles = new HashMap<>();
 	
+	//will build Hybernate db connection here.
 	
 	public static Map<Long, Message> getMessages() {
 		return messages;
