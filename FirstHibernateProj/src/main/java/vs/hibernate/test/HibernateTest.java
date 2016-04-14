@@ -1,6 +1,8 @@
 package vs.hibernate.test;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -19,21 +21,42 @@ public class HibernateTest {
 		
 		UserDetails user = new UserDetails();
 		
-		Address homeAddress = new Address();
-		Address officeAddress =  new Address();
-		homeAddress.setCity("Liedekerke");
-		homeAddress.setStreetName("Begonialaan");
-		homeAddress.setPostcode("1770");
-		homeAddress.setStreetNr("64");
+//		Address homeAddress = new Address();
+//		Address officeAddress =  new Address();
+//		homeAddress.setCity("Liedekerke");
+//		homeAddress.setStreetName("Begonialaan");
+//		homeAddress.setPostcode("1770");
+//		homeAddress.setStreetNr("64");
+//		
+//		officeAddress.setCity("Takapuna");
+//		officeAddress.setStreetName("Dominion Street");
+//		officeAddress.setPostcode("0622");
+//		officeAddress.setStreetNr("51A");
+//		user.setOfficeAddress(officeAddress);
+//		user.setHomeAddress(homeAddress);
 		
-		officeAddress.setCity("Takapuna");
-		officeAddress.setStreetName("Dominion Street");
-		officeAddress.setPostcode("0622");
-		officeAddress.setStreetNr("51A");
+		Address addr = new Address();
+		Address addr2 = new Address();
+		
+		addr.setCity("Liedekerke");
+		addr.setStreetName("Begonialaan");
+		addr.setPostcode("1770");
+		addr.setStreetNr("64");
+		user.getListOfAddresses().add(addr);
+		
+		addr2.setCity("Takapuna");
+		addr2.setStreetName("Dominion Street");
+		addr2.setPostcode("0622");
+		addr2.setStreetNr("51A");
+		user.getListOfAddresses().add(addr2);
+		
+		
+		System.out.println("size: " + user.getListOfAddresses().size());
+		for (Address a : user.getListOfAddresses()){
+			System.out.println("streetName is : " + a.getStreetName());
+		}
 		
 		user.setUserName("Vincent");
-		user.setOfficeAddress(officeAddress);
-		user.setHomeAddress(homeAddress);
 		user.setDate(new Date());
 		user.setDescription("Vincent his description");
 		
@@ -52,7 +75,7 @@ public class HibernateTest {
 			session.beginTransaction();
 			user = session.get(UserDetails.class, 1);
 			
-			System.out.println("username is : " + user.getUserName());
+			
 			
 			
 			

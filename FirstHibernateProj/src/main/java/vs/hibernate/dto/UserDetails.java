@@ -1,11 +1,10 @@
 package vs.hibernate.dto;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,20 +22,18 @@ public class UserDetails {
 	private String userName;
 	@Temporal(TemporalType.DATE) 
 	private Date date;
-	@Embedded
-	private Address homeAddress;
-
-	@Embedded
-	@AttributeOverrides({
-		@AttributeOverride(name="streetName",column=@Column(name="officeStreetName")),
-		@AttributeOverride(name="streetNr",column=@Column(name="officeStreetNumber")),
-		@AttributeOverride(name="city",column=@Column(name="officeCity")),
-		@AttributeOverride(name="postcode",column=@Column(name="officePostcode")),
-	})
-	private Address officeAddress;
 	@Lob 
 	private String description;
+	@ElementCollection
+	private Set<Address> listOfAddresses = new HashSet<Address>();
+
 	
+	public Set<Address> getListOfAddresses() {
+		return listOfAddresses;
+	}
+	public void setListOfAddresses(Set<Address> listOfAddresses) {
+		this.listOfAddresses = listOfAddresses;
+	}
 	public int getUserId() {
 		return userId;
 	}
@@ -62,18 +59,30 @@ public class UserDetails {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Address getHomeAddress() {
-		return homeAddress;
-	}
-	public void setHomeAddress(Address homeAddress) {
-		this.homeAddress = homeAddress;
-	}
-	public Address getOfficeAddress() {
-		return officeAddress;
-	}
-	public void setOfficeAddress(Address officeAddress) {
-		this.officeAddress = officeAddress;
-	}
+	
+//	@Embedded
+//	private Address homeAddress;
+//	@Embedded
+//	@AttributeOverrides({
+//		@AttributeOverride(name="streetName",column=@Column(name="officeStreetName")),
+//		@AttributeOverride(name="streetNr",column=@Column(name="officeStreetNumber")),
+//		@AttributeOverride(name="city",column=@Column(name="officeCity")),
+//		@AttributeOverride(name="postcode",column=@Column(name="officePostcode")),
+//	})
+//	private Address officeAddress;
+	
+//	public Address getHomeAddress() {
+//		return homeAddress;
+//	}
+//	public void setHomeAddress(Address homeAddress) {
+//		this.homeAddress = homeAddress;
+//	}
+//	public Address getOfficeAddress() {
+//		return officeAddress;
+//	}
+//	public void setOfficeAddress(Address officeAddress) {
+//		this.officeAddress = officeAddress;
+//	}
 	
 	
 }
