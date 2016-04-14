@@ -19,14 +19,21 @@ public class HibernateTest {
 		
 		UserDetails user = new UserDetails();
 		
-		Address addr = new Address();
-		addr.setCity("Liedekerke");
-		addr.setStreetName("Begonialaan");
-		addr.setPostcode("1770");
-		addr.setStreetNr("64");
+		Address homeAddress = new Address();
+		Address officeAddress =  new Address();
+		homeAddress.setCity("Liedekerke");
+		homeAddress.setStreetName("Begonialaan");
+		homeAddress.setPostcode("1770");
+		homeAddress.setStreetNr("64");
+		
+		officeAddress.setCity("Takapuna");
+		officeAddress.setStreetName("Dominion Street");
+		officeAddress.setPostcode("0622");
+		officeAddress.setStreetNr("51A");
 		
 		user.setUserName("Vincent");
-		user.setAddress(addr);
+		user.setOfficeAddress(officeAddress);
+		user.setHomeAddress(homeAddress);
 		user.setDate(new Date());
 		user.setDescription("Vincent his description");
 		

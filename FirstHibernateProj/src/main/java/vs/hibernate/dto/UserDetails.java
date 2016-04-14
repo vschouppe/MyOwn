@@ -2,6 +2,8 @@ package vs.hibernate.dto;
 
 import java.util.Date;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -22,11 +24,18 @@ public class UserDetails {
 	@Temporal(TemporalType.DATE) 
 	private Date date;
 	@Embedded
-	private Address address;
+	private Address homeAddress;
+
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name="streetName",column=@Column(name="officeStreetName")),
+		@AttributeOverride(name="streetNr",column=@Column(name="officeStreetNumber")),
+		@AttributeOverride(name="city",column=@Column(name="officeCity")),
+		@AttributeOverride(name="postcode",column=@Column(name="officePostcode")),
+	})
+	private Address officeAddress;
 	@Lob 
 	private String description;
-	
-	
 	
 	public int getUserId() {
 		return userId;
@@ -47,19 +56,24 @@ public class UserDetails {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}
 	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+	public Address getHomeAddress() {
+		return homeAddress;
+	}
+	public void setHomeAddress(Address homeAddress) {
+		this.homeAddress = homeAddress;
+	}
+	public Address getOfficeAddress() {
+		return officeAddress;
+	}
+	public void setOfficeAddress(Address officeAddress) {
+		this.officeAddress = officeAddress;
+	}
 	
 	
 }
