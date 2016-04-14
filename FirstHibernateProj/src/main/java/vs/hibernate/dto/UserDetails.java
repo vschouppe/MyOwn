@@ -1,17 +1,27 @@
 package vs.hibernate.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.JoinColumn;
+
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.Type;
+
+
 
 @Entity (name = "USER_DETAILS")// entity is telling hibernate that UserDetails needs to be saved
 public class UserDetails {
@@ -25,12 +35,15 @@ public class UserDetails {
 	@Lob 
 	private String description;
 	@ElementCollection
-	private Set<Address> listOfAddresses = new HashSet<Address>();
-
+	@JoinTable(joinColumns = @JoinColumn(name="userid"))
+	@SequenceGenerator(name = "seqGen")
+	@CollectionId(columns = { @Column(name ="addressId")} , generator="seqGen", type = @Type(type="long"))
+	private Collection<Address> listOfAddresses = new ArrayList<Address>();
 	
-	public Set<Address> getListOfAddresses() {
+	public Collection<Address> getListOfAddresses() {
 		return listOfAddresses;
 	}
+	
 	public void setListOfAddresses(Set<Address> listOfAddresses) {
 		this.listOfAddresses = listOfAddresses;
 	}
