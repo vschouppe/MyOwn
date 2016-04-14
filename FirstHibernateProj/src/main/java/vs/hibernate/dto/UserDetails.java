@@ -1,23 +1,26 @@
-package vs.hibernate.models;
+package vs.hibernate.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity // entity is telling hibernate that UserDetails needs to be saved
+@Entity (name = "USER_DETAILS")// entity is telling hibernate that UserDetails needs to be saved
 public class UserDetails {
 
-	@Id //this shows hibernate that userId is the primary key
+
 	private int userId;
 	private String userName;
 	
-		
-	
+	@Id //this shows hibernate that userId is the primary key
+	@Column (name = "USER_ID")
 	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+	
+	@Column (name ="USER_NAME")
 	public String getUserName() {
 		return userName;
 	}

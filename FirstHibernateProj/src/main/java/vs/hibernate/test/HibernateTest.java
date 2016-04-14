@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import vs.hibernate.models.UserDetails;
+import vs.hibernate.dto.UserDetails;
 
 public class HibernateTest {
 
@@ -15,10 +15,9 @@ public class HibernateTest {
 		// TODO Auto-generated method stub
 		
 		UserDetails user = new UserDetails();
-		user.setUserId(1);
-		user.setUserName("Aimee");
+		user.setUserId(3);
+		user.setUserName("Sol");
 		
-		Boolean saved = false;
 		
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
@@ -28,14 +27,14 @@ public class HibernateTest {
 			session.beginTransaction();
 			session.save(user);
 			session.getTransaction();
-			saved = true;
+			session.getTransaction().commit();
 		} catch (HibernateException e) {
 			// TODO Auto-generated catch block
+			System.out.println("Issue occured!!");
 			e.printStackTrace();
 			session.getTransaction().rollback();
 		}
 		
-		if (saved) session.getTransaction().commit();
 		
 		
 		
