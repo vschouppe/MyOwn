@@ -1,18 +1,29 @@
 package vs.hibernate.dto;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity (name = "USER_DETAILS")// entity is telling hibernate that UserDetails needs to be saved
 public class UserDetails {
 
 
+	@Id //this shows hibernate that userId is the primary key
 	private int userId;
 	private String userName;
+	@Temporal(TemporalType.DATE) 
+	private Date date;
+	private String address;
+	@Lob 
+	private String description;
 	
-	@Id //this shows hibernate that userId is the primary key
-	@Column (name = "USER_ID")
+	
+	
 	public int getUserId() {
 		return userId;
 	}
@@ -20,12 +31,29 @@ public class UserDetails {
 		this.userId = userId;
 	}
 	
-	@Column (name ="USER_NAME")
 	public String getUserName() {
 		return userName;
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	
