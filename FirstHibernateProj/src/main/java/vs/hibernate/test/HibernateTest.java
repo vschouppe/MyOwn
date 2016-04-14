@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import vs.hibernate.dto.Address;
 import vs.hibernate.dto.UserDetails;
 
 public class HibernateTest {
@@ -17,9 +18,15 @@ public class HibernateTest {
 		// TODO Auto-generated method stub
 		
 		UserDetails user = new UserDetails();
-		user.setUserId(1);
+		
+		Address addr = new Address();
+		addr.setCity("Liedekerke");
+		addr.setStreetName("Begonialaan");
+		addr.setPostcode("1770");
+		addr.setStreetNr("64");
+		
 		user.setUserName("Vincent");
-		user.setAddress("VIncent his address");
+		user.setAddress(addr);
 		user.setDate(new Date());
 		user.setDescription("Vincent his description");
 		

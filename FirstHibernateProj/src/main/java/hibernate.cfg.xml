@@ -34,6 +34,7 @@
         <!-- this was not here
         Names the annotated entity class -->
         <mapping class="vs.hibernate.dto.UserDetails"/>
+        <mapping class="vs.hibernate.dto.Address"/>
         
 
     </session-factory>
