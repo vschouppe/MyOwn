@@ -70,11 +70,14 @@ public class HibernateTest {
 		
 		TwoWheeler vehicle = new TwoWheeler();
 		FourWheeler vehicle2 = new FourWheeler();
+		Vehicle vehicle3 = new Vehicle();
+		
 		
 		vehicle.setVehicleName("Aprila");		
 		vehicle.setSteeringHandle("handle");
 		vehicle2.setVehicleName("Discovery");
 		vehicle2.setSteeringWheel("wheel");
+		vehicle3.setVehicleName("Car");
 
 		
 //		user.getVehicleList().add(vehicle);
@@ -103,10 +106,9 @@ public class HibernateTest {
 		try {
 
 			session.beginTransaction();
-			session.save(user);
-			session.save(user2);
-			session.save(vehicle);
+			session.save(vehicle3);
 			session.save(vehicle2);
+			session.save(vehicle);
 			session.getTransaction();
 			session.getTransaction().commit();
 			
