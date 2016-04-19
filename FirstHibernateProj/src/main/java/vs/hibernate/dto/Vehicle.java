@@ -11,14 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 
 @Entity
-@Inheritance
-@DiscriminatorColumn (
-		name = "vehicleType",
-		discriminatorType= DiscriminatorType.STRING
-		)
+@Inheritance (strategy=InheritanceType.TABLE_PER_CLASS)
 public class Vehicle {
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
