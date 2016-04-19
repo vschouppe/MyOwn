@@ -1,5 +1,7 @@
 package vs.hibernate.test;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,6 +13,7 @@ import org.hibernate.cfg.Configuration;
 
 import vs.hibernate.dto.Address;
 import vs.hibernate.dto.UserDetails;
+import vs.hibernate.dto.Vehicle;
 
 public class HibernateTest {
 
@@ -20,6 +23,7 @@ public class HibernateTest {
 		// TODO Auto-generated method stub
 		
 		UserDetails user = new UserDetails();
+		UserDetails user2 = new UserDetails();
 		
 //		Address homeAddress = new Address();
 //		Address officeAddress =  new Address();
@@ -34,31 +38,58 @@ public class HibernateTest {
 //		officeAddress.setStreetNr("51A");
 //		user.setOfficeAddress(officeAddress);
 //		user.setHomeAddress(homeAddress);
+//		
+//		Address addr = new Address();
+//		Address addr2 = new Address();
+//		
+//		addr.setCity("Liedekerke");
+//		addr.setStreetName("Begonialaan");
+//		addr.setPostcode("1770");
+//		addr.setStreetNr("64");
+//		user.getListOfAddresses().add(addr);
+//		
+//		addr2.setCity("Takapuna");
+//		addr2.setStreetName("Dominion Street");
+//		addr2.setPostcode("0622");
+//		addr2.setStreetNr("51A");
+//		user.getListOfAddresses().add(addr2);
 		
-		Address addr = new Address();
-		Address addr2 = new Address();
 		
-		addr.setCity("Liedekerke");
-		addr.setStreetName("Begonialaan");
-		addr.setPostcode("1770");
-		addr.setStreetNr("64");
-		user.getListOfAddresses().add(addr);
-		
-		addr2.setCity("Takapuna");
-		addr2.setStreetName("Dominion Street");
-		addr2.setPostcode("0622");
-		addr2.setStreetNr("51A");
-		user.getListOfAddresses().add(addr2);
-		
-		
-		System.out.println("size: " + user.getListOfAddresses().size());
-		for (Address a : user.getListOfAddresses()){
-			System.out.println("streetName is : " + a.getStreetName());
-		}
+//		System.out.println("size: " + user.getListOfAddresses().size());
+//		for (Address a : user.getListOfAddresses()){
+//			System.out.println("streetName is : " + a.getStreetName());
+//		}
+//		
 		
 		user.setUserName("Vincent");
-		user.setDate(new Date());
-		user.setDescription("Vincent his description");
+		user2.setUserName("Marc");
+//		user.setDate(new Date());
+//		user.setDescription("Vincent his description");
+		
+		Vehicle vehicle = new Vehicle();
+		Vehicle vehicle2 = new Vehicle();
+		
+		vehicle.setVehicleName("Car");
+		vehicle2.setVehicleName("Jeep");
+		
+		user.getVehicleList().add(vehicle);
+		user.getVehicleList().add(vehicle2);
+		vehicle.getUserdetailList().add(user);
+		vehicle.getUserdetailList().add(user2);
+		
+		user2.getVehicleList().add(vehicle);
+		user2.getVehicleList().add(vehicle2);
+		vehicle2.getUserdetailList().add(user);
+		vehicle2.getUserdetailList().add(user2);
+		
+//		Collection<Vehicle> vehicleList = new ArrayList<Vehicle>();
+//		Collection<UserDetails> userDetailsList = new ArrayList<UserDetails>();
+//		
+//		vehicleList.add(vehicle);
+//		vehicleList.add(vehicle2);
+//		
+//		user.setVehicles(vehicleList);
+//		vehicle.setUserdetailList(userDetailsList);
 		
 		
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
@@ -68,6 +99,9 @@ public class HibernateTest {
 
 			session.beginTransaction();
 			session.save(user);
+			session.save(user2);
+			session.save(vehicle);
+			session.save(vehicle2);
 			session.getTransaction();
 			session.getTransaction().commit();
 			
