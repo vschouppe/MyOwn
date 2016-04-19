@@ -35,6 +35,8 @@
         Names the annotated entity class -->
         <mapping class="vs.hibernate.dto.UserDetails"/>
         <mapping class="vs.hibernate.dto.Vehicle"/>
+        <mapping class="vs.hibernate.dto.TwoWheeler"/>
+        <mapping class="vs.hibernate.dto.FourWheeler"/>
          <!--<mapping class="vs.hibernate.dto.Address"/>  -->
         
 

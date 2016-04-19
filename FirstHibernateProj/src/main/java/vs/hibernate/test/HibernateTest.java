@@ -12,6 +12,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import vs.hibernate.dto.Address;
+import vs.hibernate.dto.FourWheeler;
+import vs.hibernate.dto.TwoWheeler;
 import vs.hibernate.dto.UserDetails;
 import vs.hibernate.dto.Vehicle;
 
@@ -66,21 +68,24 @@ public class HibernateTest {
 //		user.setDate(new Date());
 //		user.setDescription("Vincent his description");
 		
-		Vehicle vehicle = new Vehicle();
-		Vehicle vehicle2 = new Vehicle();
+		TwoWheeler vehicle = new TwoWheeler();
+		FourWheeler vehicle2 = new FourWheeler();
 		
-		vehicle.setVehicleName("Car");
-		vehicle2.setVehicleName("Jeep");
+		vehicle.setVehicleName("Aprila");		
+		vehicle.setSteeringHandle("handle");
+		vehicle2.setVehicleName("Discovery");
+		vehicle2.setSteeringWheel("wheel");
+
 		
-		user.getVehicleList().add(vehicle);
-		user.getVehicleList().add(vehicle2);
-		vehicle.getUserdetailList().add(user);
-		vehicle.getUserdetailList().add(user2);
-		
-		user2.getVehicleList().add(vehicle);
-		user2.getVehicleList().add(vehicle2);
-		vehicle2.getUserdetailList().add(user);
-		vehicle2.getUserdetailList().add(user2);
+//		user.getVehicleList().add(vehicle);
+//		user.getVehicleList().add(vehicle2);
+//		vehicle.getUserdetailList().add(user);
+//		vehicle.getUserdetailList().add(user2);
+//		
+//		user2.getVehicleList().add(vehicle);
+//		user2.getVehicleList().add(vehicle2);
+//		vehicle2.getUserdetailList().add(user);
+//		vehicle2.getUserdetailList().add(user2);
 		
 //		Collection<Vehicle> vehicleList = new ArrayList<Vehicle>();
 //		Collection<UserDetails> userDetailsList = new ArrayList<UserDetails>();
