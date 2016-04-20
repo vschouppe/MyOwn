@@ -6,10 +6,14 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.annotations.QueryBinder;
 
 import vs.hibernate.dto.Address;
 import vs.hibernate.dto.FourWheeler;
@@ -116,8 +120,8 @@ public class HibernateTest {
 			session.beginTransaction();
 			user = session.get(UserDetails.class, 1);
 			
-			
-			
+
+
 			
 			
 		} catch (HibernateException e) {
