@@ -5,7 +5,7 @@
  */
 package codility.vs.trainingTests;
 
-import vs.codility.training.TapeEquilibrium;
+import vs.codility.training.timeComplexity.TapeEquilibrium;
 import java.util.concurrent.TimeoutException;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

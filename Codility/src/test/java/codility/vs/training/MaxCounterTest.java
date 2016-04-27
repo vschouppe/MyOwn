@@ -5,7 +5,7 @@
  */
 package codility.vs.training;
 
-import vs.codility.training.MaxCounter;
+import vs.codility.training.countingElements.MaxCounter;
 import java.util.Random;
 import java.util.concurrent.TimeoutException;
 import org.junit.AfterClass;

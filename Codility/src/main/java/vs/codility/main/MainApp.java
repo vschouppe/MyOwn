@@ -5,6 +5,8 @@
  */
 package vs.codility.main;
 
+import vs.codility.training.iterations.BinaryGap;
+import vs.codility.training.arrays.CyclicRotation;
 import vs.codility.training.*;
 
 /**
