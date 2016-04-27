@@ -1,0 +1,59 @@
+@CHARSET "ISO-8859-1";
+
+header, footer, section, article, section {
+	border: 1px solid grey;
+	margin: 5px;
+	margin-bottom: 15px;
+	padding: 8px;
+	background-color: white;
+}
+
+/* this is a comment
+this as well */
+
+div.message {
+	margin: 25px 15px;
+	border: 1px solid grey;
+	padding: 8px;
+}
+
+
+div.comment {
+	margin: 5px 150px;
+	border: 1px solid grey;
+	padding: 50px;
+}
+
+div.profiles {
+	border: 1px solid grey;
+	margin: 5px;
+	margin-bottom: 15px;
+	padding: 8px;
+	background-color: white;
+	display: block;
+}
+
+aside {
+	border: 1px solid grey;
+	margin: 5px;
+	margin-left: 100px margin-bottom: 15px;
+	padding: 8px;
+	background-color: white;
+}
+
+header, footer {
+	border: 1px solid grey;
+	color: white;
+	background-color: #444;
+	margin-bottom: 5px;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li {
+	display: inline;
+	margin: 5px;
+}

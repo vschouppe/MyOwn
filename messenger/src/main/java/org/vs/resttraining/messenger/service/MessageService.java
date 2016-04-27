@@ -18,7 +18,19 @@ public class MessageService {
 		messages.put(2L, new Message(2,"vincent m2", Names.VINCENT));
 		messages.put(3L, new Message(3,"aimee m1", Names.AIMEE));
 		
+		String n = new String("hey");
+		System.out.println(n.toString());
+		System.out.println(n.trim());
+		System.out.println(n.equals(new String("hey")));
+		System.out.println(n.equals(""));
+		
+		int i =32;
+		long l = 1;
+		double d = 45;
+		
+		
 	}
+
 	
 	public List<Message> getAllMessages(){
 		return new ArrayList(messages.values());
