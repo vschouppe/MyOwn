@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codility.vs.trainingTests;
+package vs.codility.trainingTests;
 
 import vs.codility.training.timeComplexity.TapeEquilibrium;
 import java.util.concurrent.TimeoutException;

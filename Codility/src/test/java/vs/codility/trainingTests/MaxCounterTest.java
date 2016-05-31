@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codility.vs.training;
+package vs.codility.trainingTests;
 
 import vs.codility.training.countingElements.MaxCounter;
 import java.util.Random;
